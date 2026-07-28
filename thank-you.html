@@ -19,7 +19,7 @@
   gtag('js', new Date());
   gtag('config', 'AW-18345842541');
 </script>
-<!-- BOOKING CONVERSION still needs its label — add send_to 'AW-18345842541/BOOKING_LABEL' in fireBooking() below once created in Google Ads. -->
+<!-- Booking conversion fires in fireBooking() below (AW-18345842541/2l4mCIGW39ccEO2u_atE). -->
 
 <style>
   :root{
@@ -86,7 +86,9 @@
     try{
       if(typeof gtag==='function'){
         gtag('event','conversion',{
-          /* 'send_to':'AW-XXXXXXXXX/BOOKING_LABEL' */
+          'send_to':'AW-18345842541/2l4mCIGW39ccEO2u_atE',
+          'value':1.0,
+          'currency':'USD'
         });
       }
     }catch(e){}

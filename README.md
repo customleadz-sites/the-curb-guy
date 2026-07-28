@@ -24,11 +24,19 @@ If the Jobber link ever changes, find/replace it everywhere in `index.html`.
 - Email: marcus@mrcurber.com
 - Address: 1606 North 3rd Street, Dardanelle, AR
 
-## Conversion tracking — NOT live yet
-The page fires `request_quote_click` and `call_click` events **if** a `gtag` is present.
-To activate: paste Kennedy's Google Ads / GA4 gtag snippet into `<head>` and map those
-event names to conversions. (Jobber hosts its own confirmation page on their domain, so the
-quote-button click is the trackable signal on our side, not a thank-you-page load.)
+## Conversion tracking — LIVE (Google Ads AW-18345842541)
+Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three conversions:
+
+| Conversion | How it fires | Where | Label |
+|---|---|---|---|
+| **Call** | "Calls from a website" — Google forwarding number swaps in for ad visitors on the call buttons, counts real calls past the min length | `index.html` phone snippet, scoped by CSS class `call-swap` | `KunVCMuj3tccEO2u_atE` |
+| **Text** | tap on a Text button (`sms:`) fires `gtag('event','conversion')` | `index.html` JS, `.track-text` handler | `NXxWCKTy49ccEO2u_atE` |
+| **Booking** | thank-you page load after a real Jobber submit (`fireBooking()`) | `thank-you.html` | `2l4mCIGW39ccEO2u_atE` |
+
+- **`call-swap` class is on CALL buttons ONLY** — never add it to an `sms:`/Text element, or texts would route to the call-tracking number. Call and Text share (479) 237-9888, so this scoping is what keeps them separate.
+- Google Ads only *counts* these when the visitor came from a Google Ads click (GCLID). Total lead volume (all sources) lives in Jobber.
+- **Requires in Jobber:** the request form's confirmation must **redirect to `https://the-curb-guy.vercel.app/thank-you`** — that's what drives visitors to the booking-conversion page. If that redirect isn't set, the Booking conversion never fires.
+- `request_quote_click` / `call_click` / `messenger_click` still fire as plain (non-conversion) dataLayer events — harmless signals, not Ads conversions.
 
 ## Content constraints (important — don't overclaim)
 - **No "licensed & insured" claim** — not confirmed by the client. Do not add it.
