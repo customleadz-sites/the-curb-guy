@@ -683,7 +683,11 @@
   document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>fire('request_quote_click')));
   document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',()=>fire('call_click')));
   document.querySelectorAll('.track-msgr').forEach(a=>a.addEventListener('click',()=>fire('messenger_click')));
-  document.querySelectorAll('.track-text').forEach(a=>a.addEventListener('click',()=>fire('text_click')));
+  // Text conversion (Google Ads) — fires on tap of any Text button
+  function fireTextConversion(){
+    try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-18345842541/NXxWCKTy49ccEO2u_atE','value':1.0,'currency':'USD'}); } }catch(e){}
+  }
+  document.querySelectorAll('.track-text').forEach(a=>a.addEventListener('click',()=>{ fire('text_click'); fireTextConversion(); }));
 </script>
 </body>
 </html>
