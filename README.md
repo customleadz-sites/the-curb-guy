@@ -16,8 +16,11 @@ Jobber blocks embedding (iframe), so a button-to-new-tab is the correct approach
 If the Jobber link ever changes, find/replace it everywhere in `index.html`.
 
 ## Contact info (keep consistent — Google call tracking expects the format)
-- Call: **(479) 317-1554** → `tel:+14793171554`
-- Text: **(479) 237-9888** → `sms:+14792379888`
+- Call AND text: **(479) 237-9888** → `tel:+14792379888` / `sms:+14792379888`
+  (unified 2026-07-24 — this is Marcus's Jobber dedicated number, so texts land in his
+  Jobber inbox. Jobber numbers are text-first: voice calls only reach Marcus if a
+  forwarding number is saved in Jobber → Settings → Company Settings. VERIFY with Marcus
+  before launch. His direct line (479) 317-1554 is no longer shown on the page.)
 - Email: marcus@mrcurber.com
 - Address: 1606 North 3rd Street, Dardanelle, AR
 

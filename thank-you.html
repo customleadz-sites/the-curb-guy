@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Request Received | The Curb Guy</title>
+<meta name="description" content="Thanks for your request — Marcus at The Curb Guy will be in touch soon.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- =====================================================================
+     GOOGLE TAG + BOOKING CONVERSION  —  NOT LIVE YET
+     When Kennedy provides the Google Ads Conversion ID + "Booking Request"
+     label, uncomment and fill:
+       1) the gtag loader (also add the SAME loader to index.html <head>)
+       2) the send_to in fireBooking() below (AW-XXXXXXXXX/BOOKING_LABEL)
+     Until then, fireBooking() safely no-ops.
+====================================================================== -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+</script>
+-->
+
+<style>
+  :root{
+    --ink:#161f3d;--navy:#1e2a55;--red:#b23a2e;--red-deep:#94291f;
+    --cream:#f5efe3;--cream-2:#efe6d5;--stone:#8b8375;--stone-dk:#4c4840;--gold:#d8a13c;--green:#3f7d54;
+    --font-d:"Bricolage Grotesque",system-ui,sans-serif;--font-b:"Instrument Sans",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font-b);color:var(--ink);background:var(--navy);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  h1{font-family:var(--font-d);font-weight:800;letter-spacing:-.02em;line-height:1.05}
+  header{padding:16px 22px;display:flex;justify-content:center}
+  header img{height:60px}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:24px 22px 60px}
+  .card{background:var(--cream);border-radius:22px;max-width:560px;width:100%;padding:44px 38px;text-align:center;box-shadow:0 30px 60px -24px rgba(0,0,0,.5)}
+  .check{width:78px;height:78px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+  .check svg{width:42px;height:42px;color:#fff}
+  .eyebrow{font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--red);margin-bottom:10px}
+  h1{font-size:clamp(1.9rem,5vw,2.6rem);color:var(--navy);margin-bottom:14px}
+  .lead{font-size:1.1rem;color:var(--stone-dk);margin-bottom:24px}
+  .next{background:var(--cream-2);border-radius:14px;padding:20px 22px;text-align:left;margin-bottom:26px}
+  .next b{font-family:var(--font-d);color:var(--navy);display:block;margin-bottom:8px}
+  .next ul{margin:0;padding-left:20px}
+  .next li{margin-bottom:6px;color:var(--stone-dk)}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--font-d);font-weight:700;font-size:1rem;padding:.9em 1.5em;border-radius:12px;min-height:52px;transition:transform .18s ease,background .18s ease}
+  .btn-primary{background:var(--red);color:#fff}
+  .btn-primary:hover{background:var(--red-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid rgba(22,31,61,.3)}
+  .btn-ghost:hover{background:rgba(22,31,61,.06);transform:translateY(-2px)}
+  .reach{margin-top:22px;font-size:.95rem;color:var(--stone)}
+  .reach a{color:var(--red-deep);font-weight:600}
+</style>
+</head>
+<body>
+<header><img src="images/logo.png" alt="The Curb Guy logo"></header>
+<main>
+  <div class="card">
+    <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <div class="eyebrow">Request Received</div>
+    <h1>Thanks — you're on the list!</h1>
+    <p class="lead">Your project details are in. Marcus will review them and reach out soon to set up your free consultation.</p>
+    <div class="next">
+      <b>What happens next</b>
+      <ul>
+        <li>Marcus reviews your request and photos.</li>
+        <li>He reaches out to talk color, pattern, and pricing.</li>
+        <li>You pick a time and get on the schedule.</li>
+      </ul>
+    </div>
+    <div class="btns">
+      <a class="btn btn-primary" href="index.html">Back to Home</a>
+      <a class="btn btn-ghost" href="tel:+14792379888">Call (479) 237-9888</a>
+    </div>
+    <p class="reach">Need to add something? Text us at <a href="sms:+14792379888">(479) 237-9888</a>.</p>
+  </div>
+</main>
+
+<script>
+  /* Fires the "Booking Request" Google Ads conversion when a real submission
+     lands here from Jobber's redirect. Safely no-ops until the gtag loader
+     above is enabled and the send_to is filled in. */
+  function fireBooking(){
+    try{
+      if(typeof gtag==='function'){
+        gtag('event','conversion',{
+          /* 'send_to':'AW-XXXXXXXXX/BOOKING_LABEL' */
+        });
+      }
+    }catch(e){}
+  }
+  fireBooking();
+</script>
+</body>
+</html>
