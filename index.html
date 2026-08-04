@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="theme-color" content="#f5efe3">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Custom Concrete Curbing &amp; Landscape Edging in Central Arkansas | The Curb Guy</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18345842541"></script>
@@ -92,6 +92,7 @@
   header{
     position:sticky;top:0;z-index:100;background:var(--cream);
     border-bottom:1px solid rgba(22,31,61,.08);
+    padding-top:env(safe-area-inset-top); /* fill the iPhone status-bar zone with solid cream */
   }
   .hd{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 22px;max-width:var(--maxw);margin:0 auto}
   .hd-logo{display:flex;align-items:center;gap:11px}
