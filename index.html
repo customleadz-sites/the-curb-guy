@@ -75,7 +75,7 @@
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:.55em;
     font-family:var(--font-d);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;
-    padding:.95em 1.6em;border-radius:12px;cursor:pointer;border:0;
+    padding:.95em 1.6em;border-radius:12px;cursor:pointer;border:0;white-space:nowrap;
     transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
     min-height:52px;
   }
@@ -577,10 +577,6 @@
       <p>Get a free, no-obligation quote from Marcus and see what a custom concrete border can do for your home.</p>
       <div class="hero-cta">
         <a class="btn btn-primary btn-lg track-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener">Book Your Free Consultation →</a>
-        <a class="btn btn-call btn-lg track-msgr" href="https://m.me/61568336370078" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.9 1.19 5.5 3.14 7.3.16.15.26.36.27.58l.05 1.78c.02.57.61.94 1.13.71l1.99-.88c.17-.07.36-.09.54-.04.91.25 1.88.39 2.89.39 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6 7.46l-2.93 4.65c-.47.74-1.47.93-2.18.4l-2.33-1.75a.6.6 0 0 0-.72 0l-3.15 2.39c-.42.32-.97-.18-.69-.63l2.93-4.65c.47-.74 1.47-.93 2.18-.4l2.33 1.75a.6.6 0 0 0 .72 0l3.15-2.39c.42-.32.97.18.69.63z"/></svg>
-          Message on Messenger
-        </a>
         <a class="btn btn-ghost btn-lg track-call call-swap" href="tel:+14792379888">Call (479) 237-9888</a>
       </div>
       <p class="final-sub">Free quotes · No obligation · We reply fast</p>
@@ -601,7 +597,6 @@
         <h4>Get In Touch</h4>
         <div class="fline"><a class="call-swap" href="tel:+14792379888">Call: (479) 237-9888</a></div>
         <div class="fline"><a class="track-text" href="sms:+14792379888">Text: (479) 237-9888</a></div>
-        <div class="fline"><a href="https://m.me/61568336370078" target="_blank" rel="noopener">Message on Messenger</a></div>
         <div class="fline"><a href="mailto:marcus@mrcurber.com">marcus@mrcurber.com</a></div>
       </div>
       <div>
@@ -682,7 +677,6 @@
   }
   document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>fire('request_quote_click')));
   document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',()=>fire('call_click')));
-  document.querySelectorAll('.track-msgr').forEach(a=>a.addEventListener('click',()=>fire('messenger_click')));
   // Text conversion (Google Ads) — fires on tap of any Text button
   function fireTextConversion(){
     try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-18345842541/NXxWCKTy49ccEO2u_atE','value':1.0,'currency':'USD'}); } }catch(e){}
