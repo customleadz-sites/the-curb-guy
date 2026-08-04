@@ -663,26 +663,16 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
-  /* ---- Location eyebrow swap (?loc=pope-county) ---- */
+  /* ---- Location eyebrow swap ----
+     Google Ads final URL suffix: loc={loc_physical_ms}
+     Google substitutes its numeric geotarget ID for the searcher's town/county;
+     we map ID -> "Town, State" (all towns + the 23 target counties). Unknown/missing -> default text. */
   (function(){
-    var LOCS = {
-      "cleburne-county":"Cleburne County, Arkansas","conway-county":"Conway County, Arkansas",
-      "crawford-county":"Crawford County, Arkansas","faulkner-county":"Faulkner County, Arkansas",
-      "franklin-county":"Franklin County, Arkansas","garland-county":"Garland County, Arkansas",
-      "johnson-county":"Johnson County, Arkansas","le-flore-county":"Le Flore County, Oklahoma",
-      "logan-county":"Logan County, Arkansas","madison-county":"Madison County, Arkansas",
-      "montgomery-county":"Montgomery County, Arkansas","newton-county":"Newton County, Arkansas",
-      "perry-county":"Perry County, Arkansas","pope-county":"Pope County, Arkansas",
-      "pulaski-county":"Pulaski County, Arkansas","saline-county":"Saline County, Arkansas",
-      "scott-county":"Scott County, Arkansas","searcy-county":"Searcy County, Arkansas",
-      "sebastian-county":"Sebastian County, Arkansas","sequoyah-county":"Sequoyah County, Oklahoma",
-      "van-buren-county":"Van Buren County, Arkansas","washington-county":"Washington County, Arkansas",
-      "yell-county":"Yell County, Arkansas"
-    };
+    var LOCS = {"1013156":"Adona, Arkansas","1013157":"Alexander, Arkansas","1013158":"Alma, Arkansas","1013167":"Barling, Arkansas","1013169":"Bauxite, Arkansas","1013173":"Benton, Arkansas","1013176":"Bigelow, Arkansas","1013178":"Booneville, Arkansas","1013180":"Branch, Arkansas","1013184":"Bryant, Arkansas","1013192":"Center Ridge, Arkansas","1013193":"Charleston, Arkansas","1013197":"Clarksville, Arkansas","1013198":"Clinton, Arkansas","1013200":"Conway, Arkansas","1013203":"Danville, Arkansas","1013204":"Dardanelle, Arkansas","1013213":"Elm Springs, Arkansas","1013215":"Enola, Arkansas","1013217":"Fairfield Bay, Arkansas","1013218":"Farmington, Arkansas","1013219":"Fayetteville, Arkansas","1013226":"Fort Smith, Arkansas","1013230":"Glenwood, Arkansas","1013234":"Greenbrier, Arkansas","1013235":"Greenwood, Arkansas","1013237":"Hackett, Arkansas","1013242":"Hartford, Arkansas","1013243":"Hattieville, Arkansas","1013245":"Heber Springs, Arkansas","1013246":"Hector, Arkansas","1013248":"Higden, Arkansas","1013251":"Hot Springs Village, Arkansas","1013254":"Huntsville, Arkansas","1013256":"Jacksonville, Arkansas","1013257":"Jasper, Arkansas","1013264":"Lavaca, Arkansas","1013267":"Leslie, Arkansas","1013268":"Little Rock, Arkansas","1013271":"London, Arkansas","1013280":"Mansfield, Arkansas","1013285":"Marshall, Arkansas","1013286":"Maumelle, Arkansas","1013294":"Morrilton, Arkansas","1013296":"Mount Ida, Arkansas","1013298":"Mount Vernon, Arkansas","1013301":"Mountainburg, Arkansas","1013306":"Norman, Arkansas","1013307":"North Little Rock, Arkansas","1013309":"Ozark, Arkansas","1013312":"Paris, Arkansas","1013314":"Pearcy, Arkansas","1013317":"Plainview, Arkansas","1013318":"Plumerville, Arkansas","1013321":"Pottsville, Arkansas","1013322":"Prairie Grove, Arkansas","1013324":"Quitman, Arkansas","1013330":"Russellville, Arkansas","1013331":"Salem, Arkansas","1013336":"Sherwood, Arkansas","1013339":"Springdale, Arkansas","1013344":"Subiaco, Arkansas","1013349":"Tontitown, Arkansas","1013352":"Van Buren, Arkansas","1013353":"Vilonia, Arkansas","1013355":"Waldron, Arkansas","1013361":"West Fork, Arkansas","1013365":"Winslow, Arkansas","1013367":"Wrightsville, Arkansas","1024138":"Bokoshe, Oklahoma","1024205":"Gans, Oklahoma","1024211":"Gore, Oklahoma","1024225":"Heavener, Oklahoma","1024255":"Le Flore, Oklahoma","1024295":"Panama, Oklahoma","1024305":"Pocola, Oklahoma","1024309":"Poteau, Oklahoma","1024320":"Roland, Oklahoma","1024322":"Sallisaw, Oklahoma","1024336":"Spiro, Oklahoma","1024347":"Talihina, Oklahoma","1024356":"Vian, Oklahoma","9052164":"Hot Springs, Arkansas","9052322":"Lincoln, Arkansas","9057055":"Cleburne County, Arkansas","9057058":"Conway County, Arkansas","9057060":"Crawford County, Arkansas","9057066":"Faulkner County, Arkansas","9057067":"Franklin County, Arkansas","9057069":"Garland County, Arkansas","9057079":"Johnson County, Arkansas","9057085":"Logan County, Arkansas","9057087":"Madison County, Arkansas","9057092":"Montgomery County, Arkansas","9057094":"Newton County, Arkansas","9057096":"Perry County, Arkansas","9057101":"Pope County, Arkansas","9057103":"Pulaski County, Arkansas","9057105":"Saline County, Arkansas","9057106":"Scott County, Arkansas","9057107":"Searcy County, Arkansas","9057108":"Sebastian County, Arkansas","9057114":"Van Buren County, Arkansas","9057115":"Washington County, Arkansas","9057118":"Yell County, Arkansas","9059060":"Le Flore County, Oklahoma","9059088":"Sequoyah County, Oklahoma","9189550":"Johnson, Arkansas","9189727":"Atkins, Arkansas","9191108":"Rockwell, Arkansas","9191499":"Elkins, Arkansas","9191752":"Piney, Arkansas","9191783":"Salem, Arkansas","9192627":"McAlmont, Arkansas","9193533":"East End, Arkansas","9195373":"Goshen, Arkansas","9195470":"Mayflower, Arkansas","9195492":"Lake Hamilton, Arkansas","9208436":"Greers Ferry, Arkansas","9208847":"Mulberry, Arkansas","9209195":"Haskell, Arkansas","9209617":"Dover, Arkansas","9210993":"Wooster, Arkansas","9212331":"Perryville, Arkansas","9214994":"Shannon Hills, Arkansas","9217917":"Muldrow, Oklahoma","9221201":"Landmark, Arkansas","9221219":"Gibson, Arkansas","9221506":"Greenland, Arkansas","9227572":"Arkoma, Oklahoma","9231045":"Carlisle, Oklahoma","9231699":"Knoxville, Arkansas","9237101":"Kibler, Arkansas","9247283":"Ola, Arkansas","9248820":"Guy, Arkansas","9251187":"Brent, Oklahoma","9251865":"Shady Point, Oklahoma","9252677":"Sweet Home, Arkansas","9258813":"Cedarville, Arkansas","9261220":"Lamar, Arkansas","9261745":"Magazine, Arkansas"};
     try{
       var loc = new URLSearchParams(window.location.search).get("loc");
-      if(loc && LOCS[loc.toLowerCase()]){
-        document.getElementById("heroEyebrow").textContent = "Serving " + LOCS[loc.toLowerCase()];
+      if(loc && LOCS[loc.trim()]){
+        document.getElementById("heroEyebrow").textContent = "Serving " + LOCS[loc.trim()];
       }
     }catch(e){}
   })();
