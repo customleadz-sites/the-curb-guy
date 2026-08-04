@@ -25,6 +25,12 @@ If the Jobber link ever changes, find/replace it everywhere in `index.html`.
 - Email: marcus@mrcurber.com
 - Address: 1606 North 3rd Street, Dardanelle, AR
 
+## Meta Pixel — LIVE (1363691585178700, added 2026-08-03)
+Base code in the `<head>` of all three pages (PageView). Events: `Lead` on quote-button
+clicks, `Contact` on call/text taps (via the same handlers as the gtag events), `Schedule`
+on thank-you load. Jobber's form can NOT carry the pixel (GA4 only) — Facebook never sees
+real submits; real FB lead counts come from Jobber's log (offline upload later).
+
 ## Conversion tracking — LIVE (Google Ads AW-18345842541)
 Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three conversions:
 
