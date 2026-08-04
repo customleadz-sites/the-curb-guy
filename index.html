@@ -18,6 +18,23 @@
     'phone_conversion_css_class': 'call-swap'
   });
 </script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1363691585178700');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="description" content="Custom concrete landscape curbing that boosts your home's curb appeal. Owner-operated, 13 years experience. Free on-site quotes in Dardanelle & across Central Arkansas & the River Valley. Call (479) 237-9888.">
 <link rel="icon" href="images/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -685,13 +702,16 @@
   function fire(action){
     try{ if(typeof gtag==='function'){ gtag('event',action,{event_category:'lead'}); } }catch(e){}
   }
-  document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>fire('request_quote_click')));
-  document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',()=>fire('call_click')));
+  function fb(ev){
+    try{ if(typeof fbq==='function'){ fbq('track',ev); } }catch(e){}
+  }
+  document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>{ fire('request_quote_click'); fb('Lead'); }));
+  document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',()=>{ fire('call_click'); fb('Contact'); }));
   // Text conversion (Google Ads) — fires on tap of any Text button
   function fireTextConversion(){
     try{ if(typeof gtag==='function'){ gtag('event','conversion',{'send_to':'AW-18345842541/NXxWCKTy49ccEO2u_atE','value':1.0,'currency':'USD'}); } }catch(e){}
   }
-  document.querySelectorAll('.track-text').forEach(a=>a.addEventListener('click',()=>{ fire('text_click'); fireTextConversion(); }));
+  document.querySelectorAll('.track-text').forEach(a=>a.addEventListener('click',()=>{ fire('text_click'); fireTextConversion(); fb('Contact'); }));
 </script>
 </body>
 </html>
