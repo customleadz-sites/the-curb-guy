@@ -297,7 +297,8 @@
   @media(max-width:720px){.foot{grid-template-columns:1fr;gap:26px}footer{padding-bottom:120px}}
 
   /* ---------- STICKY MOBILE BAR ---------- */
-  .mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;display:none;gap:0;background:var(--navy);box-shadow:0 -6px 20px rgba(0,0,0,.28);padding-bottom:env(safe-area-inset-bottom)}
+  /* sticky (not fixed): in-flow elements render into Safari's bottom-chrome bleed zone; fixed ones don't */
+  .mobile-bar{position:sticky;bottom:0;z-index:200;display:none;gap:0;background:var(--navy);box-shadow:0 -6px 20px rgba(0,0,0,.28)}
   .mobile-bar::after{content:"";position:absolute;left:0;right:0;top:100%;height:100vh;background:var(--navy);pointer-events:none}
   .mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 8px;font-family:var(--font-d);font-weight:700;font-size:1.02rem;color:#fff}
   .mobile-bar a.mb-text{background:var(--red)}
