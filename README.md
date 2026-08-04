@@ -31,6 +31,13 @@ clicks, `Contact` on call/text taps (via the same handlers as the gtag events), 
 on thank-you load. Jobber's form can NOT carry the pixel (GA4 only) — Facebook never sees
 real submits; real FB lead counts come from Jobber's log (offline upload later).
 
+## Location eyebrow swap (added 2026-08-04)
+`?loc=<google-geotarget-id>` swaps the hero eyebrow to "Serving <Town>, <State>".
+Map covers 118 towns + all 23 target counties (built from Google's geotargets CSV x Census
+place-by-county file). Google Ads campaign needs final URL suffix `loc={loc_physical_ms}` —
+Google inserts the searcher's town code automatically. Unknown/missing id -> default eyebrow.
+Facebook has no equivalent ValueTrack; FB traffic sees the default line.
+
 ## Conversion tracking — LIVE (Google Ads AW-18345842541)
 Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three conversions:
 
