@@ -7,7 +7,8 @@ landscape curbing, Dardanelle AR + Central Arkansas / River Valley.
 
 ## Files
 - `index.html` — the whole page (self-contained; all CSS/JS inline).
-- `images/` — optimized JPEGs (from Facebook photos in `../assets/`) + `logo.png`.
+- `images/` — WebP (converted 2026-08-03 from the Facebook photos in `../assets/`; heroes 1600px q78, gallery 1200px, `logo.webp`). Below-fold images use `loading="lazy"`. Originals still in git history.
+- CTA wording is **"Book Your Free Consultation"** (Marcus prefers "consultation" over "quote"; "Free" is required for ad message match — keep both words).
 
 ## The quote button (external — do NOT build a form)
 Every CTA opens Marcus's **Jobber** request form in a new tab:
