@@ -46,19 +46,14 @@
     --font-b:"Instrument Sans",system-ui,sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  /* App-shell scroll: the document never scrolls, .page does. Safari's translucent
-     bars mirror the (now static) document edges — cream header top, navy bar bottom —
-     instead of whatever content happens to be scrolling past. */
-  html{background:var(--navy);height:100%;overflow:hidden}
-  .page{height:100vh;height:100dvh;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth;background:var(--navy)}
+  html{scroll-behavior:smooth;background:var(--navy)} /* bottom overscroll/bleed shows navy (matches footer + sticky bar) */
   body{
     font-family:var(--font-b);
     color:var(--ink);
     background:var(--cream);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    overflow:hidden;
-    height:100%;
+    overflow-x:hidden;
   }
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
@@ -98,6 +93,12 @@
     position:sticky;top:0;z-index:100;background:var(--cream);
     border-bottom:1px solid rgba(22,31,61,.08);
     padding-top:env(safe-area-inset-top); /* fill the iPhone status-bar zone with solid cream */
+  }
+  /* Safari renders scrolling content blurred behind its translucent top chrome.
+     This shield extends the header's solid cream upward so that zone always samples cream. */
+  header::before{
+    content:"";position:absolute;left:0;right:0;bottom:100%;height:100vh;
+    background:var(--cream);pointer-events:none;
   }
   .hd{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 22px;max-width:var(--maxw);margin:0 auto}
   .hd-logo{display:flex;align-items:center;gap:11px}
@@ -297,6 +298,7 @@
 
   /* ---------- STICKY MOBILE BAR ---------- */
   .mobile-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;display:none;gap:0;background:var(--navy);box-shadow:0 -6px 20px rgba(0,0,0,.28);padding-bottom:env(safe-area-inset-bottom)}
+  .mobile-bar::after{content:"";position:absolute;left:0;right:0;top:100%;height:100vh;background:var(--navy);pointer-events:none}
   .mobile-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 8px;font-family:var(--font-d);font-weight:700;font-size:1.02rem;color:#fff}
   .mobile-bar a.mb-text{background:var(--red)}
   .mobile-bar svg{width:20px;height:20px}
@@ -304,7 +306,6 @@
 </style>
 </head>
 <body>
-<div class="page">
 
 <!-- ============ HEADER ============ -->
 <header>
@@ -633,7 +634,6 @@
   </a>
 </div>
 
-</div><!-- /.page -->
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
 
