@@ -16,10 +16,8 @@ Full Name · Phone · City · "Tell Us About Your Project"). Every "Book … Con
 scrolls to it. It posts to **Web3Forms** by AJAX, then redirects to `/thank-you`, which fires
 the Google Ads form conversion (`AW-18345842541/2l4mCIGW39ccEO2u_atE` — the old "Booked
 appointment on Landing Page" action, now repurposed; rename it "Quote form submit" in Ads).
-- **ACCESS KEY IS A PLACEHOLDER (`WEB3FORMS_KEY_HERE`) until Kennedy drops in a real one.**
-  Get it at web3forms.com with the email that should receive leads (marcus@mrcurber.com, or
-  Kennedy's to forward). A placeholder renders fine and silently loses every lead — test one
-  live submit in a real browser after the key is in (Web3Forms blocks curl/headless).
+- **Web3Forms access key `acfa2cee-950a-46fb-b2c4-a7f8dd9a3bb6` — LIVE 2026-09-08** (Kennedy supplied it).
+  Test submits must be done in a real browser (Web3Forms blocks curl/headless).
 - Hidden `source` field tags each lead "Google Ads" / "Facebook" / "Direct / other" from the
   click params, plus the full URL, so Marcus's email says where the lead came from.
 - Honeypot `botcheck` checkbox is hidden; leave it.
