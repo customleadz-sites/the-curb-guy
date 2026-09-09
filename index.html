@@ -116,7 +116,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
   /* ---------- QUOTE FORM (lives inside the What We Do section) ---------- */
   #quote{scroll-margin-top:96px}
   .qf{margin-bottom:64px;padding-bottom:56px;border-bottom:1px solid var(--sand)}
-  .qf-head{max-width:680px;margin-bottom:26px}
+  .qf-head{max-width:680px;margin-bottom:18px}
   .qf-head h2{font-size:clamp(1.8rem,4vw,2.5rem);margin:14px 0 10px}
   .qf-head p{font-size:1.08rem;color:var(--stone-dk)}
   .qf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 16px}
@@ -439,8 +439,6 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
     <div class="qf reveal" id="quote">
       <div class="qf-head">
         <span class="eyebrow">Free Consultation</span>
-        <h2>Tell Us About Your Project</h2>
-        <p>Fill this out and Marcus will reach out to set up your free, no-pressure consultation.</p>
       </div>
       <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
         <input type="hidden" name="access_key" value="WEB3FORMS_KEY_HERE">
@@ -449,10 +447,10 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
         <input type="hidden" name="source" id="qfSource" value="">
         <input type="checkbox" name="botcheck" class="qf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="qf-grid">
-          <div><label for="qfName">Full Name</label><input id="qfName" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
-          <div><label for="qfPhone">Phone Number</label><input id="qfPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(479) 555-0123" required></div>
-          <div><label for="qfCity">City</label><input id="qfCity" name="city" type="text" autocomplete="address-level2" placeholder="Russellville" required></div>
-          <div class="full"><label for="qfProject">Tell Us About Your Project</label><textarea id="qfProject" name="project" placeholder="Example: flower beds across the front of the house, about 60 feet. Interested in a stamped stone look." required></textarea></div>
+          <div><label for="qfName">Full Name</label><input id="qfName" name="name" type="text" autocomplete="name" required></div>
+          <div><label for="qfPhone">Phone Number</label><input id="qfPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+          <div><label for="qfCity">City</label><input id="qfCity" name="city" type="text" autocomplete="address-level2" required></div>
+          <div class="full"><label for="qfProject">Tell Us About Your Project</label><textarea id="qfProject" name="project" required></textarea></div>
         </div>
         <div class="qf-foot">
           <button class="btn btn-primary btn-lg" type="submit">Submit</button>
