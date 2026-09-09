@@ -8,7 +8,7 @@ landscape curbing, Dardanelle AR + Central Arkansas / River Valley.
 ## Files
 - `index.html` — the whole page (self-contained; all CSS/JS inline).
 - `images/` — WebP (converted 2026-08-03 from the Facebook photos in `../assets/`; heroes 1600px q78, gallery 1200px, `logo.webp`). Below-fold images use `loading="lazy"`. Originals still in git history.
-- CTA wording is **"Book Your Free Consultation"** (Marcus prefers "consultation" over "quote"; "Free" is required for ad message match — keep both words).
+- CTA wording (2026-09-08, Kennedy): every scroll-to-form button says **"Submit Form"** and the form button says **"Submit"** — "for now". The form heading keeps "Free Consultation" so the ad promise is still on the page.
 
 ## The quote form (native, added 2026-09-08 — replaces the Jobber button)
 The page now has its own form (`#quote`, top of the "What We Do" section, pill-style fields:
