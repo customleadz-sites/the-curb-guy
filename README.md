@@ -10,11 +10,21 @@ landscape curbing, Dardanelle AR + Central Arkansas / River Valley.
 - `images/` — WebP (converted 2026-08-03 from the Facebook photos in `../assets/`; heroes 1600px q78, gallery 1200px, `logo.webp`). Below-fold images use `loading="lazy"`. Originals still in git history.
 - CTA wording is **"Book Your Free Consultation"** (Marcus prefers "consultation" over "quote"; "Free" is required for ad message match — keep both words).
 
-## The quote button (external — do NOT build a form)
-Every CTA opens Marcus's **Jobber** request form in a new tab:
-`https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new`
-Jobber blocks embedding (iframe), so a button-to-new-tab is the correct approach.
-If the Jobber link ever changes, find/replace it everywhere in `index.html`.
+## The quote form (native, added 2026-09-08 — replaces the Jobber button)
+The page now has its own form (`#quote`, top of the "What We Do" section, pill-style fields:
+Full Name · Phone · City · "Tell Us About Your Project"). Every "Book … Consultation" button
+scrolls to it. It posts to **Web3Forms** by AJAX, then redirects to `/thank-you`, which fires
+the Google Ads form conversion (`AW-18345842541/2l4mCIGW39ccEO2u_atE` — the old "Booked
+appointment on Landing Page" action, now repurposed; rename it "Quote form submit" in Ads).
+- **ACCESS KEY IS A PLACEHOLDER (`WEB3FORMS_KEY_HERE`) until Kennedy drops in a real one.**
+  Get it at web3forms.com with the email that should receive leads (marcus@mrcurber.com, or
+  Kennedy's to forward). A placeholder renders fine and silently loses every lead — test one
+  live submit in a real browser after the key is in (Web3Forms blocks curl/headless).
+- Hidden `source` field tags each lead "Google Ads" / "Facebook" / "Direct / other" from the
+  click params, plus the full URL, so Marcus's email says where the lead came from.
+- Honeypot `botcheck` checkbox is hidden; leave it.
+- The old Jobber request form still exists (`https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new`)
+  but is no longer linked from the page.
 
 ## Contact info (keep consistent — Google call tracking expects the format)
 - Call AND text: **(479) 237-9888** → `tel:+14792379888` / `sms:+14792379888`
@@ -45,12 +55,12 @@ Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three 
 |---|---|---|---|
 | **Call** | "Calls from a website" — Google forwarding number swaps in for ad visitors on the call buttons, counts real calls past the min length | `index.html` phone snippet, scoped by CSS class `call-swap` | `KunVCMuj3tccEO2u_atE` |
 | **Text** | tap on a Text button (`sms:`) fires `gtag('event','conversion')` | `index.html` JS, `.track-text` handler | `NXxWCKTy49ccEO2u_atE` |
-| **Booking** | thank-you page load after a real Jobber submit (`fireBooking()`) | `thank-you.html` | `2l4mCIGW39ccEO2u_atE` |
+| **Form submit** | thank-you page load after a real on-page form submit (`fireBooking()`) | `thank-you.html` | `2l4mCIGW39ccEO2u_atE` |
 
 - **`call-swap` class is on CALL buttons ONLY** — never add it to an `sms:`/Text element, or texts would route to the call-tracking number. Call and Text share (479) 237-9888, so this scoping is what keeps them separate.
 - Google Ads only *counts* these when the visitor came from a Google Ads click (GCLID). Total lead volume (all sources) lives in Jobber.
-- **Requires in Jobber:** the request form's confirmation must **redirect to `https://the-curb-guy.vercel.app/thank-you`** — that's what drives visitors to the booking-conversion page. If that redirect isn't set, the Booking conversion never fires.
-- `request_quote_click` / `call_click` / `messenger_click` still fire as plain (non-conversion) dataLayer events — harmless signals, not Ads conversions.
+- The Booking conversion now fires from the native form's redirect to `/thank-you` (the Jobber redirect route is dead).
+- `quote_button_click` (scroll-to-form), `call_click`, `text_click`, and `generate_lead` (real form submit) fire as GA4 events. NOTE 2026-09-08: the landing-page GA4 stream (G-25R6YKY6WY) has never received data — needs a fresh web stream (see google-ads/reports/2026-09-08-changes.md item 9).
 
 ## Content constraints (important — don't overclaim)
 - **No "licensed & insured" claim** — not confirmed by the client. Do not add it.

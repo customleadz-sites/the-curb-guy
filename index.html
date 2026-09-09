@@ -113,6 +113,31 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
   .btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
   .btn-lg{font-size:1.12rem;padding:1.05em 1.9em;min-height:58px}
 
+  /* ---------- QUOTE FORM (lives inside the What We Do section) ---------- */
+  #quote{scroll-margin-top:96px}
+  .qf{margin-bottom:64px;padding-bottom:56px;border-bottom:1px solid var(--sand)}
+  .qf-head{max-width:680px;margin-bottom:26px}
+  .qf-head h2{font-size:clamp(1.8rem,4vw,2.5rem);margin:14px 0 10px}
+  .qf-head p{font-size:1.08rem;color:var(--stone-dk)}
+  .qf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 16px}
+  .qf-grid .full{grid-column:1/-1}
+  .qf label{display:block;font-family:var(--font-d);font-weight:700;font-size:.9rem;color:var(--navy);margin:0 0 7px 18px}
+  .qf input,.qf textarea{
+    width:100%;font:500 1rem var(--font-b);color:var(--ink);background:var(--white);
+    border:1.5px solid var(--sand);border-radius:999px;padding:0 22px;min-height:54px;outline:none;
+    transition:border-color .18s ease,box-shadow .18s ease;-webkit-appearance:none;appearance:none;
+  }
+  .qf textarea{border-radius:27px;padding:16px 22px;min-height:126px;resize:vertical;line-height:1.5;display:block}
+  .qf input::placeholder,.qf textarea::placeholder{color:var(--stone)}
+  .qf input:focus,.qf textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(216,161,60,.22)}
+  .qf-hp{position:absolute;left:-9999px;opacity:0;width:1px;height:1px}
+  .qf-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:20px}
+  .qf-foot .btn{border-radius:999px}
+  .qf-foot .btn[disabled]{opacity:.7;cursor:wait;transform:none}
+  .qf-note{font-size:.92rem;color:var(--stone-dk)}
+  .qf-msg{margin-top:12px;font-weight:600;color:var(--red-deep);display:none}
+  @media(max-width:860px){.qf-grid{grid-template-columns:1fr}.qf{margin-bottom:48px;padding-bottom:40px}.qf-foot .btn{width:100%}}
+
   /* ---------- HEADER ---------- */
   header{
     position:relative;z-index:100;background:var(--cream);
@@ -356,7 +381,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
         <a class="call-swap" href="tel:+14792379888">(479) 237-9888</a>
         <small>Free quotes · Open Mon–Sat</small>
       </div>
-      <a class="btn btn-primary track-quote hd-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener">Book Free Consultation</a>
+      <a class="btn btn-primary track-quote hd-quote" href="#quote">Book Free Consultation</a>
     </div>
   </div>
 </header>
@@ -369,7 +394,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
       <h1 class="hero-anim d2">Concrete Curbing &amp; Landscape Edging <span class="hl">Designed For You</span></h1>
       <p class="hero-sub hero-anim d3">Custom-colored, stamped concrete curbing & landscape edging that lasts for decades — installed by Marcus, a local owner-operator with 13 years of concrete experience.</p>
       <div class="hero-cta hero-anim d4">
-        <a class="btn btn-primary btn-lg track-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener">Book Your Free Consultation →</a>
+        <a class="btn btn-primary btn-lg track-quote" href="#quote">Book Your Free Consultation →</a>
         <a class="btn btn-ghost btn-lg track-call call-swap" href="tel:+14792379888">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
           Call (479) 237-9888
@@ -411,6 +436,31 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
 <!-- ============ SERVICES (WHAT WE DO) ============ -->
 <section class="pad">
   <div class="wrap">
+    <div class="qf reveal" id="quote">
+      <div class="qf-head">
+        <span class="eyebrow">Free Consultation</span>
+        <h2>Tell Us About Your Project</h2>
+        <p>Fill this out and Marcus will reach out to set up your free, no-pressure consultation.</p>
+      </div>
+      <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="WEB3FORMS_KEY_HERE">
+        <input type="hidden" name="subject" value="New consultation request — The Curb Guy landing page">
+        <input type="hidden" name="from_name" value="The Curb Guy website">
+        <input type="hidden" name="source" id="qfSource" value="">
+        <input type="checkbox" name="botcheck" class="qf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="qf-grid">
+          <div><label for="qfName">Full Name</label><input id="qfName" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
+          <div><label for="qfPhone">Phone Number</label><input id="qfPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(479) 555-0123" required></div>
+          <div><label for="qfCity">City</label><input id="qfCity" name="city" type="text" autocomplete="address-level2" placeholder="Russellville" required></div>
+          <div class="full"><label for="qfProject">Tell Us About Your Project</label><textarea id="qfProject" name="project" placeholder="Example: flower beds across the front of the house, about 60 feet. Interested in a stamped stone look." required></textarea></div>
+        </div>
+        <div class="qf-foot">
+          <button class="btn btn-primary btn-lg" type="submit">Book My Free Consultation →</button>
+          <span class="qf-note">No obligation · Marcus reaches out personally</span>
+        </div>
+        <p class="qf-msg" id="qfMsg" role="alert"></p>
+      </form>
+    </div>
     <div class="sec-head reveal">
       <span class="eyebrow">What We Do</span>
       <h2>Custom Concrete Curbing &amp; Edging</h2>
@@ -551,12 +601,12 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
       <h2>Three Steps to a Better Yard</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="num">1</div><h3>Book Your Free Consultation</h3><p>Pick a time that works and we'll get you on the schedule. It's free, and there's no obligation.</p></div>
+      <div class="step reveal"><div class="num">1</div><h3>Book Your Free Consultation</h3><p>Fill out the quick form or call. Marcus reaches out to set up a time — it's free, and there's no obligation.</p></div>
       <div class="step reveal"><div class="num">2</div><h3>We Design &amp; Price It</h3><p>Marcus visits, helps you pick your color and pattern, and gives you a clear price.</p></div>
       <div class="step reveal"><div class="num">3</div><h3>We Install It</h3><p>We shape and pour your custom border on site — most yards done in a single day.</p></div>
     </div>
     <div style="text-align:center;margin-top:42px" class="reveal">
-      <a class="btn btn-primary btn-lg track-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener">Book Your Free Consultation →</a>
+      <a class="btn btn-primary btn-lg track-quote" href="#quote">Book Your Free Consultation →</a>
     </div>
   </div>
 </section>
@@ -626,7 +676,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
       <h2>Ready to Transform Your Yard?</h2>
       <p>Get a free, no-obligation quote from Marcus and see what a custom concrete border can do for your home.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg track-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener">Book Your Free Consultation →</a>
+        <a class="btn btn-primary btn-lg track-quote" href="#quote">Book Your Free Consultation →</a>
         <a class="btn btn-ghost btn-lg track-call call-swap" href="tel:+14792379888">Call (479) 237-9888</a>
       </div>
       <p class="final-sub">Free quotes · No obligation · We reply fast</p>
@@ -653,7 +703,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
         <h4>The Curb Guy LLC</h4>
         <div class="fline">1606 North 3rd Street</div>
         <div class="fline">Dardanelle, AR</div>
-        <div class="fline" style="margin-top:12px"><a class="btn btn-primary track-quote" href="https://clienthub.getjobber.com/hubs/f4e088fd-10e7-4f54-9a27-cfb65f989ff5/public/requests/2758953/new" target="_blank" rel="noopener" style="font-size:.92rem;padding:.7em 1.2em;min-height:auto">Book Free Consultation →</a></div>
+        <div class="fline" style="margin-top:12px"><a class="btn btn-primary track-quote" href="#quote" style="font-size:.92rem;padding:.7em 1.2em;min-height:auto">Book Free Consultation →</a></div>
       </div>
     </div>
     <div class="foot-bottom">
@@ -747,7 +797,7 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
 
   /* ---- Conversion tracking ----
      Fires Google Ads / GA4 events on the two real conversion actions:
-     quote-button clicks (Jobber) and tap-to-call. Paste your gtag snippet
+     quote-button clicks (scroll to the on-page form) and tap-to-call. Paste your gtag snippet
      in <head> and set the send_to IDs, and these will report automatically. */
   function fire(action){
     try{ if(typeof gtag==='function'){ gtag('event',action,{event_category:'lead'}); } }catch(e){}
@@ -755,7 +805,35 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
   function fb(ev){
     try{ if(typeof fbq==='function'){ fbq('track',ev); } }catch(e){}
   }
-  document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>{ fire('request_quote_click'); fb('Lead'); }));
+  document.querySelectorAll('.track-quote').forEach(a=>a.addEventListener('click',()=>{ fire('quote_button_click'); }));
+
+  /* ---- Quote form (Web3Forms, AJAX) ----
+     Success -> GA4 generate_lead + Meta Lead, then /thank-you (which fires the
+     Google Ads form conversion). Failure -> inline message with the phone number. */
+  (function(){
+    const f=document.getElementById('quoteForm'); if(!f) return;
+    const msg=document.getElementById('qfMsg');
+    try{
+      const q=new URLSearchParams(location.search);
+      const src=(q.has('gclid')||q.has('gad_source')||q.has('gbraid')||q.has('wbraid'))?'Google Ads':(q.has('fbclid')?'Facebook':'Direct / other');
+      document.getElementById('qfSource').value=src+' — '+location.href;
+    }catch(e){}
+    f.addEventListener('submit',async e=>{
+      e.preventDefault();
+      if(!f.checkValidity()){ f.reportValidity(); return; }
+      const btn=f.querySelector('button[type=submit]'); const label=btn.textContent;
+      btn.disabled=true; btn.textContent='Sending…'; msg.style.display='none';
+      try{
+        const r=await fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
+        const j=await r.json().catch(()=>({}));
+        if(r.ok && j.success!==false){ fire('generate_lead'); fb('Lead'); window.location.href='thank-you'; return; }
+        throw new Error(j.message||'Send failed');
+      }catch(err){
+        msg.textContent="Something went wrong sending your request. Please call or text (479) 237-9888 and we'll get you taken care of.";
+        msg.style.display='block'; btn.disabled=false; btn.textContent=label;
+      }
+    });
+  })();
   document.querySelectorAll('.track-call').forEach(a=>a.addEventListener('click',()=>{ fire('call_click'); fb('Contact'); }));
   // Text conversion (Google Ads) — fires on tap of any Text button
   function fireTextConversion(){
