@@ -7,15 +7,16 @@ landscape curbing, Dardanelle AR + Central Arkansas / River Valley.
 
 ## Files
 - `index.html` — the whole page (self-contained; all CSS/JS inline).
-- `images/` — WebP (converted 2026-08-03 from the Facebook photos in `../assets/`; heroes 1600px q78, gallery 1200px, `logo.webp`). Below-fold images use `loading="lazy"`. Originals still in git history.
+- `images/` — WebP (converted 2026-08-03 from the Facebook photos in `../assets/`; heroes 1600px q78, gallery 1200px, `logo.webp`). Below-fold images use `loading="lazy"`. Above-fold heroes re-compressed 2026-09-10 (splashpad 900px, farmhouse 1100px, tree-ring 800px, q74). Originals still in git history.
 - CTA wording (2026-09-08, Kennedy): every scroll-to-form button says **"Submit Form"** and the form button says **"Submit"** — "for now". The form heading keeps "Free Consultation" so the ad promise is still on the page.
 
 ## The quote form (native, added 2026-09-08 — replaces the Jobber button)
 The page now has its own form (`#quote`, top of the "What We Do" section, pill-style fields:
 Full Name · Phone · City · "Tell Us About Your Project"). Every "Book … Consultation" button
 scrolls to it. It posts to **Web3Forms** by AJAX, then redirects to `/thank-you`, which fires
-the Google Ads form conversion (`AW-18345842541/2l4mCIGW39ccEO2u_atE` — the old "Booked
-appointment on Landing Page" action, now repurposed; rename it "Quote form submit" in Ads).
+the Google Ads conversion **"Quote Form Submit (landing page)"** (`AW-18345842541/EbxSCITKvfMcEO2u_atE`,
+action id 7758374148, created 2026-09-10). The old "Booked appointment on Landing Page" action
+(`2l4mCIGW39ccEO2u_atE`) is left in place, unused, in case the Jobber form ever comes back.
 - **Web3Forms access key `acfa2cee-950a-46fb-b2c4-a7f8dd9a3bb6` — LIVE 2026-09-08** (Kennedy supplied it).
   Test submits must be done in a real browser (Web3Forms blocks curl/headless).
 - Hidden `source` field tags each lead "Google Ads" / "Facebook" / "Direct / other" from the
@@ -39,6 +40,9 @@ clicks, `Contact` on call/text taps (via the same handlers as the gtag events), 
 on thank-you load. Jobber's form can NOT carry the pixel (GA4 only) — Facebook never sees
 real submits; real FB lead counts come from Jobber's log (offline upload later).
 
+## Section anchors (for Google Ads sitelinks — don't rename)
+`#quote` form · `#why` benefits · `#work` gallery · `#how` steps · `#reviews` · `#area` service area. The campaign's sitelinks point at #work, #reviews, #how, #area.
+
 ## Location eyebrow swap (added 2026-08-04)
 `?loc=<google-geotarget-id>` swaps the hero eyebrow to "Serving <Town>, <State>".
 Map covers 118 towns + all 23 target counties (built from Google's geotargets CSV x Census
@@ -53,7 +57,7 @@ Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three 
 |---|---|---|---|
 | **Call** | "Calls from a website" — Google forwarding number swaps in for ad visitors on the call buttons, counts real calls past the min length | `index.html` phone snippet, scoped by CSS class `call-swap` | `KunVCMuj3tccEO2u_atE` |
 | **Text** | tap on a Text button (`sms:`) fires `gtag('event','conversion')` | `index.html` JS, `.track-text` handler | `NXxWCKTy49ccEO2u_atE` |
-| **Form submit** | thank-you page load after a real on-page form submit (`fireBooking()`) | `thank-you.html` | `2l4mCIGW39ccEO2u_atE` |
+| **Form submit** | thank-you page load after a real on-page form submit (`fireBooking()`) | `thank-you.html` | `EbxSCITKvfMcEO2u_atE` |
 
 - **`call-swap` class is on CALL buttons ONLY** — never add it to an `sms:`/Text element, or texts would route to the call-tracking number. Call and Text share (479) 237-9888, so this scoping is what keeps them separate.
 - Google Ads only *counts* these when the visitor came from a Google Ads click (GCLID). Total lead volume (all sources) lives in Jobber.

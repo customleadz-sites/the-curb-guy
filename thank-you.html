@@ -105,14 +105,15 @@ src="https://www.facebook.com/tr?id=1363691585178700&ev=PageView&noscript=1"
 </main>
 
 <script>
-  /* Fires the "Booking Request" Google Ads conversion when a real submission
-     lands here from the on-page quote form. Safely no-ops until the gtag loader
-     above is enabled and the send_to is filled in. */
+  /* Fires the "Quote Form Submit (landing page)" Google Ads conversion
+     (action 7758374148, created 2026-09-10) when a real on-page form submit
+     lands here. The old "Booked appointment" label 2l4mCIGW39ccEO2u_atE is
+     kept in Ads untouched in case we go back to Jobber. */
   function fireBooking(){
     try{
       if(typeof gtag==='function'){
         gtag('event','conversion',{
-          'send_to':'AW-18345842541/2l4mCIGW39ccEO2u_atE',
+          'send_to':'AW-18345842541/EbxSCITKvfMcEO2u_atE',
           'value':1.0,
           'currency':'USD'
         });
