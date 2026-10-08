@@ -86,3 +86,69 @@ Google tag is installed in `<head>` of `index.html` and `thank-you.html`. Three 
 ## Deploy
 Static site — deploys to Vercel via Kennedy's usual pipeline (customleadz-sites GitHub org,
 set git user.email first). Domain target: mrcurber.com (currently live elsewhere — coordinate cutover).
+
+---
+
+## Lighting landing page — `lighting.html` + `lighting-thank-you.html` (built 2026-10-06, NOT yet deployed)
+Second Google Ads landing page on the same repo/project for the new **permanent exterior / holiday lighting**
+service (roofline only). Clean URLs: `/lighting`, `/lighting-thank-you`. Also the landing page for the Facebook
+lighting campaign (FB traffic lands with no `?ag=` and sees the default hero).
+
+- **Ad-group message match via `?ag=`:** `/lighting` = Permanent Lighting (default) · `/lighting?ag=install` =
+  Christmas Light Installers · `/lighting?ag=house` = Lights On a House. Swaps eyebrow + H1 + subhead only.
+  `?loc=<geotarget id>` still swaps the eyebrow to the searcher's town (same map as index.html; runs after `ag`).
+  Google Ads final URL suffix for this campaign: `loc={loc_physical_ms}` (ag is baked into each ad group's final URL).
+- **Photos (`images/lighting/`) are the SUPPLIER'S library** (Trimlight, Utah homes — see
+  `../holiday-lighting/photo-library.md`). Captions deliberately say "what the system looks like installed", never
+  "our work". Kennedy (2026-10-06): supplier photos are fine as-is; no need to swap in Marcus's own.
+  The 4-photo "same house, four nights" row + the day/night slider are all one Riverton UT house.
+- **Form:** same Web3Forms key, subject "New LIGHTING consultation request", hidden `service=Permanent exterior
+  lighting` + `source` fields. Redirects to `/lighting-thank-you`, which fires the **"Lighting Quote Form"**
+  conversion (action 7830500870, label `VcjCCIbs75UdEO2u_atE`, created 2026-10-08) — separate from curbing's form action.
+- Text taps on this page fire **"Lighting Text Click"** (action 7830611037, label `coK0CN3I9pUdEO2u_atE`), not curbing's
+  "Text From Website". Call tracking (`call-swap`) + Meta pixel: identical wiring to index.html.
+- **Google Ads campaign BUILT 2026-10-08, PAUSED** (24333481814) — see `../google-ads/reports/2026-10-08-changes.md`. GA4 events carry
+  `service:'lighting'`; pixel events carry `content_name:'lighting'`.
+- **Claims used (Kennedy confirmed 2026-10-06):** licensed & insured · lifetime warranty on the lights ·
+  5-year LABOR warranty on the install (confirmed 2026-10-06) · app-controlled colors + schedules (confirmed) ·
+  owner-operated · 13 years in the trades · 5-star rated. **Deliberately NOT claimed (Kennedy, 2026-10-06):** one-day install.
+  Trim-matched track CONFIRMED 2026-10-08 (the "in a color that matches your trim" line stays). Photos section is titled just "Photos" — supplier photos are fine to use as-is;
+  no need to wait for Marcus's own installs.
+- No prices on the page (Kennedy: the $4–6k figure was for the report only). FAQ answers "how much" with the
+  free on-site written quote.
+- Curbing page (`index.html`) is untouched; the curbing campaign stays live.
+
+### Design (v2, 2026-10-06 — Kennedy's direction)
+- NOT the Curb Guy brand. No logo, no business name in the header: a small roofline-with-lights SVG mark + "Exterior Lighting"
+  wordmark. The only "The Curb Guy LLC" mention is the footer copyright line (business identity for Google's policy + the
+  privacy policy) — Kennedy knows, hasn't asked to remove it.
+- Palette = "Midnight": near-black blue `#0D1320` / `#080D18`, matte navy button `#2C4A78`, steel-blue accent `#9BB3D4`,
+  cool gray light sections `#EEF1F5`. Picked from three matte options (Evergreen / Midnight / Graphite); the other two are
+  in git history of this README's session notes if he wants them back. Gold (v1 of the redesign) was rejected.
+- Fonts: Instrument Serif (display, italic accents) + Figtree (body). Buttons are pill-shaped, matte, no glow.
+- Token names in the CSS are the shared ones (`--navy`, `--red`, `--cream`…) so the sections stay interchangeable; values changed.
+- **REVIEW LABEL (remove before launch):** a yellow strip under the header (`#hdPage`) names the page version
+  ("For Permanent Lighting and Facebook" / "For Christmas Lights" / "For Lights on a House") so Kennedy can tell
+  tabs apart while reviewing. REMOVED 2026-10-08 before deploy (the `?ag=` H1/media swap stays).
+- Hero: Kennedy plans a VIDEO hero, possibly a different video (and color pattern) per page version — he is choosing
+  the clips himself; don't add any yet.
+- 2026-10-06 (later): Kennedy wants these pages SIMPLE. Hero = title + two buttons + three trust pills only (eyebrow
+  and subhead removed on all three versions). The `?loc=` town-name swap was removed with the eyebrow — the Google Ads
+  final URL suffix no longer needs `loc={loc_physical_ms}` for this campaign.
+- 2026-10-07: **Color demo** section (`#colors-demo`, right under the trust bar): "Click/Tap to Change the Color" — ten scenes of
+  the SAME house (Springdale Dr, the angled-from-the-left view = Kennedy's "other angle"; files `260617 … UT-1…44`), cropped
+  4:3 into `images/lighting/colors/`: off (daytime), warm, white, blue (blue+white), purple, razorbacks (red/white/teal — the
+  closest the set has), christmas, halloween (orange), july, party. No solid blue/green exists in that angle. Two stacked
+  images crossfade; scenes preload near the viewport; taps log a `color_demo_tap` GA4 event. A comment marks the slot above
+  it for Kennedy's generated "person holding the phone app" photo (not received yet).
+- `?review=1` on any page URL collapses the full-screen hero (screenshot helper only; harmless for visitors).
+- 2026-10-07 (later): **Page cut down to the sections Kennedy kept** — hero · trust bar · phone photo + 6 stats + color demo ·
+  NEW product section (`#product`, six fact cards sourced from trimlight.com: patented channel under the soffit, Edge app +
+  Google Home/Alexa, 50,000-hr bulbs / 20–30 yrs normal use / lifetime product warranty on core components, no lens so no
+  fading, 0.9 W per bulb on 12 V, authorized-dealer install + 5-yr labor warranty) · day/night slider · estimate form ·
+  Marcus · service area · final CTA. REMOVED: four-nights row, why-permanent cards, photo gallery, warranty band, reviews, FAQ.
+  Stats shown: Millions of colors · Lifetime warranty · 50,000 hrs · 0.9 W · 5 Years labor · Since 2010 (Trimlight).
+  **The page now names Trimlight** (stats + product cards) — CONFIRMED 2026-10-08 (Kennedy): Marcus IS an authorized Trimlight dealer, brand name stays.
+- 2026-10-07: **Hero media per version** (inline script right after the hero): default + `?ag=house` = Ariat Cove 42.jpg
+  (desktop) / Ariat Cove 6.mov (phone); `?ag=install` = Indian Wells UT-95.jpg (desktop, red/green) / Copper Gulch 8.mov
+  (phone — came pillar-boxed inside a 1920×1080 frame, black bars cropped off). All clips: first 12 s, muted, loop, crf 24.
